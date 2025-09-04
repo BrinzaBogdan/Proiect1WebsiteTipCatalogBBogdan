@@ -11,3 +11,11 @@ export interface SearchManufacturerProps {
   manufacturer: string;
   setManufacturer: (manufacturer: string) => void;
 }
+
+export interface ClothesProps {
+  title: string;
+  price: number | string; 
+  source: string;
+  image?: string;        
+  description?: string;  
+}

@@ -6,7 +6,7 @@ const SearchBar = () => {
   const [manufacturer, setManufacturer] = useState('');
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault(); 
     console.log('Search:', manufacturer);
   };
 

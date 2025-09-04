@@ -10,7 +10,7 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
   const [query, setQuery] = useState('');
 
   const filteredManufacturers =
-    query === ''
+    query.trim() === ''
       ? manufacturers
       : manufacturers.filter((item) =>
           item.toLowerCase().replace(/\s+/g, '').includes(query.toLowerCase().replace(/\s+/g, ''))
@@ -20,7 +20,6 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
     <div className="search-manufacturer w-full relative">
       <Combobox value={manufacturer} onChange={setManufacturer}>
         <div className="relative w-full">
-          {/* Input */}
           <Combobox.Input
             className="search-manufacturer__input w-full border rounded px-4 py-2 text-gray-900 outline-none"
             placeholder="Search manufacturer..."
@@ -28,12 +27,15 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
             onChange={(e) => setQuery(e.target.value)}
           />
 
-          {/* Button with logo */}
           <Combobox.Button className="absolute top-2 right-2">
-            <Image src="/boss-logo.svg" width={30} height={30} alt="Boss Logo" />
+            <Image
+              src={`/${manufacturer.toLowerCase()}-logo.svg`}
+              width={30}
+              height={30}
+              alt={`${manufacturer} Logo`}
+            />
           </Combobox.Button>
 
-          {/* Dropdown options */}
           <Transition
             as={Fragment}
             leave="transition ease-in duration-100"
@@ -43,7 +45,10 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
           >
             <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded bg-white shadow-lg z-50">
               {filteredManufacturers.length === 0 && query !== '' ? (
-                <Combobox.Option value={query} className="p-2 cursor-pointer hover:bg-blue-500 hover:text-white">
+                <Combobox.Option
+                  value={query}
+                  className="p-2 cursor-pointer hover:bg-blue-500 hover:text-white"
+                >
                   Create "{query}"
                 </Combobox.Option>
               ) : (
@@ -55,15 +60,9 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
                       `p-2 cursor-pointer ${active ? 'bg-blue-500 text-white' : 'text-gray-900'}`
                     }
                   >
-                    {({ selected, active  }) => {
-                      <>
-                      // 
-                      
-                      
-                      </>
-
-
-                    }}
+                    {({ selected }) => (
+                      <span className={selected ? 'font-bold' : ''}>{item}</span>
+                    )}
                   </Combobox.Option>
                 ))
               )}

@@ -6,7 +6,7 @@ import { footerLinks } from '../constants/index';
 const Footer = () => {
   return (
     <footer className="w-full bg-black text-white py-10 px-6 sm:px-16 flex flex-col items-center">
-      {/* Logo and text */}
+      { }
       <div className="flex flex-col items-center gap-4 mb-10">
         <Image
           src="/boss.svg"  
@@ -16,12 +16,12 @@ const Footer = () => {
           className="object-contain"
         />
         <p className="text-center text-gray-400">
-          Clothing Empire 1967 <br />
+          Clothing Empire since 1967 <br />
           All rights reserved &copy;
         </p>
       </div>
 
-      {/* Links sections */}
+      { }
       <div className="flex flex-col md:flex-row gap-10 justify-center items-start w-full max-w-6xl text-center md:text-left">
         {footerLinks.map((linkGroup) => (
           <div key={linkGroup.title} className="flex flex-col gap-3">
